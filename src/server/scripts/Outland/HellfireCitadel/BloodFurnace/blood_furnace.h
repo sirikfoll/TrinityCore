@@ -50,8 +50,8 @@ enum BFCreatureIds
     NPC_THE_MAKER               = 17381,
     NPC_BROGGOK                 = 17380,
     NPC_KELIDAN_THE_BREAKER     = 17377,
-    NPC_PRISONER1               = 17398,
-    NPC_PRISONER2               = 17429,
+    NPC_PRISONER_1              = 17398,
+    NPC_PRISONER_2              = 17429,
     NPC_BROGGOK_POISON_CLOUD    = 17662
 };
 
@@ -76,17 +76,12 @@ enum BFGameObjectIds
     GO_BROGGOK_LEVER            = 181982
 };
 
-enum BFActionIds
-{
-    ACTION_ACTIVATE_BROGGOK     = 1,
-    ACTION_RESET_BROGGOK        = 2,
-    ACTION_PREPARE_BROGGOK      = 3
-};
-
 template <class AI, class T>
 inline AI* GetBloodFurnaceAI(T* obj)
 {
     return GetInstanceAI<AI>(obj, BFScriptName);
 }
+
+#define RegisterBloodFurnaceCreatureAI(ai_name) RegisterCreatureAIWithFactory(ai_name, GetBloodFurnaceAI)
 
 #endif // BLOOD_FURNACE_H_
